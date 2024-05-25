@@ -1,0 +1,22 @@
+.navbar {
+  background-color: #9ac3df;
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1.25rem;
+}
+
+.userLogo {
+  font-size: larger;
+  height: 3rem;
+  width: 3rem;
+  background-color: #f3ffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #7dafd5;
+  font-weight: 900;
+  border: 2px solid #7dafd5;
+}
