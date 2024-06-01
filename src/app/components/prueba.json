@@ -1,0 +1,56 @@
+{
+  "players": [
+    {
+      "nombre": "María Pérez",
+      "edad": 20,
+      "dorsal": 9,
+      "goles": 10,
+      "asistencias": 7,
+      "minutos_jugados": 1500,
+      "tarjetas": {
+        "amarillas": 2,
+        "rojas": 0
+      },
+      "alta_medica": true
+    },
+    {
+      "nombre": "Lucía Gómez",
+      "edad": 19,
+      "dorsal": 7,
+      "goles": 5,
+      "asistencias": 10,
+      "minutos_jugados": 1300,
+      "tarjetas": {
+        "amarillas": 1,
+        "rojas": 1
+      },
+      "alta_medica": false
+    },
+    {
+      "nombre": "Ana López",
+      "edad": 22,
+      "dorsal": 11,
+      "goles": 8,
+      "asistencias": 4,
+      "minutos_jugados": 1400,
+      "tarjetas": {
+        "amarillas": 3,
+        "rojas": 0
+      },
+      "alta_medica": true
+    },
+    {
+      "nombre": "Laura Martínez",
+      "edad": 21,
+      "dorsal": 10,
+      "goles": 12,
+      "asistencias": 6,
+      "minutos_jugados": 1600,
+      "tarjetas": {
+        "amarillas": 0,
+        "rojas": 0
+      },
+      "alta_medica": true
+    }
+  ]
+}
