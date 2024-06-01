@@ -1,0 +1,47 @@
+<p>Statistics works!</p>
+<!-- <div class="card">
+  <p-table
+    [value]="players"
+    dataKey="id"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th *ngFor="let header of headers" style="min-width: 200px">
+          {{ header }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-player>
+      <tr>
+        <td>
+          <p-tableCheckbox
+            [value]="player"
+            [disabled]="isInjured(player)"
+          ></p-tableCheckbox>
+        </td>
+        <td>
+          <img
+            [alt]="player.name"
+            [src]="getImage(player)"
+            width="32"
+            style="vertical-align: middle"
+          />
+          <span class="ml-1 vertical-align-middle"
+            >{{ player.name }} {{ player.surname }}</span
+          >
+        </td>
+        <td>{{ player.position }}</td>
+        <td>{{ player.goals }}</td>
+        <td>{{ player.passes }}</td>
+        <td>{{ player.playedMinutes }}</td>
+        <td>
+          <p-tag
+            [value]="player.available ? 'Disponible' : 'Lesión'"
+            [severity]="player.available ? 'success' : 'danger'"
+          ></p-tag>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div> -->

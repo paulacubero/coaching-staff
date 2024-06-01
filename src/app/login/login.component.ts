@@ -28,7 +28,7 @@ export class LoginComponent {
 
   login(): void {
     if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/coaching']);
     } else {
       alert('Login failed');
     }

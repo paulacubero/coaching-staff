@@ -1,0 +1,78 @@
+<div class="card">
+  <p-table
+    [value]="players"
+    [(selection)]="selectedplayers"
+    dataKey="id"
+    [rowSelectable]="isRowSelectable"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="caption">
+      <button
+        type="button"
+        pButton
+        pRipple
+        icon="pi pi-file-pdf"
+        (click)="exportPdf()"
+        class="p-button-warning mr-2"
+        pTooltip="PDF"
+        tooltipPosition="bottom"
+        label="Convocatoria"
+        [disabled]="selectedplayers.length > 18 || selectedplayers.length < 11"
+      ></button>
+      <i
+        *ngIf="selectedplayers.length > 18 || selectedplayers.length < 11"
+        class="pi pi-users mr-4 p-text-secondary"
+        pBadge
+        style="font-size: 2rem"
+        [value]="selectedplayers.length.toString()"
+        severity="danger"
+      ></i>
+      <i
+        *ngIf="selectedplayers.length < 19 && selectedplayers.length > 10"
+        class="pi pi-users mr-4 p-text-secondary"
+        pBadge
+        style="font-size: 2rem"
+        [value]="selectedplayers.length.toString()"
+        severity="success"
+      ></i>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 4rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th *ngFor="let header of headers" style="min-width: 200px">
+          {{ header }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-player>
+      <tr>
+        <td>
+          <p-tableCheckbox
+            [value]="player"
+            [disabled]="isInjured(player)"
+          ></p-tableCheckbox>
+        </td>
+        <td>
+          <img
+            [alt]="player.name"
+            [src]="getImage(player)"
+            width="32"
+            style="vertical-align: middle"
+          />
+          <span class="ml-1 vertical-align-middle"
+            >{{ player.name }} {{ player.surname }}</span
+          >
+        </td>
+        <td>{{ player.position }}</td>
+        <td>
+          <p-tag
+            [value]="player.available ? 'Disponible' : 'Lesión'"
+            [severity]="player.available ? 'success' : 'danger'"
+          ></p-tag>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

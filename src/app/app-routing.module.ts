@@ -2,11 +2,22 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
-import { HomeComponent } from './home/home.component';
+import { SquadListComponent } from './components/screens/squad-list/squad-list.component';
+import { CoachingHomeComponent } from './components/screens/coaching-home/coaching-home.component';
+import { StatisticsComponent } from './components/screens/statistics/statistics.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  {
+    path: 'coaching',
+    component: CoachingHomeComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'squad-list', component: SquadListComponent },
+      { path: 'statistics', component: StatisticsComponent }
+      
+    ],
+  },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
