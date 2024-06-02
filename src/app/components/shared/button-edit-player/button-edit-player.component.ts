@@ -47,7 +47,7 @@ export class ButtonEditPlayerComponent implements OnInit {
   ngOnInit(): void {
     if (this.player) {
       this.playerStatsForm = this._fb.group({
-        id: [this.player.id],
+        id: [this.player._id],
         playedMinutes: [0],
         goals: [0],
         passes: [0],

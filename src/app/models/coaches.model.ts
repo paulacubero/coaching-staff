@@ -1,22 +1,27 @@
 export interface Player {
-    id: string;
-    name: string;
-    surname: string;
-    age: number;
-    height: string;
-    weight: string;
-    playedMinutes: string;
-    goals: number;
-    passes: number;
-    position: PositionKeys;
-    available: boolean;
-    dorsal: number;
-    img: string;
+  _id: string;
+  name: string;
+  surname: string;
+  age: number;
+  height: number;
+  weight: number;
+  playedMinutes: number;
+  goals: number;
+  passes: number;
+  assists: number;
+  position: string;
+  available: boolean;
+  dorsal: number;
+  img: string;
 }
 
 export interface Columns {
-    header: string;
-    dataKey: keyof Player;
+  header: string;
+  dataKey: keyof Player;
 }
 
-export type PositionKeys = 'Portera' | 'Defensa' | 'Centrocampista' | 'Delantera';
+export type PositionKeys =
+  | 'Portera'
+  | 'Defensa'
+  | 'Centrocampista'
+  | 'Delantera';
