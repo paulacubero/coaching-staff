@@ -30,7 +30,6 @@ export class ButtonDeletePlayerComponent implements OnInit {
         '¿Estas segura que quieres de dar de baja a la jugadora? Esta operación no es reversible',
       icon: 'pi pi-info-circle',
       accept: () => {
-        console.log('eliminando este id', this.player?.id);
         this._messageService.add({
           severity: 'success',
           summary: 'Confirmado',

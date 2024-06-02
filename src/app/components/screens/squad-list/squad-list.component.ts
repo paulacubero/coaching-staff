@@ -6,7 +6,6 @@ import { BadgeModule } from 'primeng/badge';
 import { Player, Columns } from 'src/app/models/coaches.model';
 import {
   DEFAULT_AVATAR,
-  PLAYERS,
   SQUAD_LIST_COLUMNS,
   TABLE_HEADERS_SQUAD_LIST,
 } from 'src/app/constants/constants';

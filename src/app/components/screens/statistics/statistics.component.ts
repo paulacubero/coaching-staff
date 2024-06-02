@@ -2,10 +2,15 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
-import { DEFAULT_AVATAR, PLAYERS, TABLE_HEADERS_STATISTICS } from 'src/app/constants/constants';
+import {
+  DEFAULT_AVATAR,
+  TABLE_HEADERS_STATISTICS,
+} from 'src/app/constants/constants';
 import { Player } from 'src/app/models/coaches.model';
 import { ButtonEditPlayerComponent } from '../../shared/button-edit-player/button-edit-player.component';
 import { ButtonDeletePlayerComponent } from '../../shared/button-delete-player/button-delete-player.component';
+import { PlayersService } from 'src/app/services/players.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-statistics',
@@ -15,20 +20,19 @@ import { ButtonDeletePlayerComponent } from '../../shared/button-delete-player/b
     TableModule,
     ButtonModule,
     ButtonEditPlayerComponent,
-    ButtonDeletePlayerComponent
+    ButtonDeletePlayerComponent,
   ],
   templateUrl: './statistics.component.html',
-  styleUrls: ['./statistics.component.scss']
+  styleUrls: ['./statistics.component.scss'],
 })
 export class StatisticsComponent implements OnInit {
-  players!: Player[];
+  players$: Observable<Player[]> = this._playersService.getPlayers();
   headers!: string[];
   visible: boolean = false;
 
-  constructor() {}
+  constructor(private _playersService: PlayersService) {}
 
   ngOnInit() {
-    this.players = PLAYERS;
     this.headers = TABLE_HEADERS_STATISTICS;
   }
 

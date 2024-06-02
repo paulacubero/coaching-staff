@@ -1,4 +1,4 @@
-<div class="card pt-3 pb-3 pr-8 pl-8">
+<div *ngIf="players$ | async as players" class="card pt-3 pb-3 pr-8 pl-8">
   <p-table
     [value]="players"
     dataKey="id"
@@ -24,17 +24,15 @@
             >{{ player.name }} {{ player.surname }}</span
           >
         </td>
-        <td>{{ player.position }}</td>
         <td>{{ player.goals }}</td>
+        <td>{{ player.assists }}</td>
         <td>{{ player.passes }}</td>
         <td>{{ player.playedMinutes }}</td>
         <td>
-          <app-button-edit-player
-            [player]="player"
-          ></app-button-edit-player>
+          <app-button-edit-player [player]="player"></app-button-edit-player>
           <app-button-delete-player
-          [player]="player"
-        ></app-button-delete-player>
+            [player]="player"
+          ></app-button-delete-player>
         </td>
       </tr>
     </ng-template>
