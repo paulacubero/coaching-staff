@@ -37,11 +37,11 @@ export class NewPlayerComponent implements OnInit {
   playerForm: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
+    private _fb: FormBuilder,
     private _playersService: PlayersService,
-    private messageService: MessageService
+    private _messageService: MessageService
   ) {
-    this.playerForm = this.fb.group({
+    this.playerForm = this._fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
       age: [null, [Validators.required, Validators.min(0)]],
@@ -61,7 +61,7 @@ export class NewPlayerComponent implements OnInit {
       .addPlayer(player)
       .pipe(
         tap(() =>
-          this.messageService.add({
+          this._messageService.add({
             severity: 'success',
             summary: 'Confirmado',
             detail: `Se ha añadido nueva jugadora`,

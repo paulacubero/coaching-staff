@@ -11,30 +11,30 @@ export class PlayersService {
   visibleEditDialog: boolean = false;
   private apiUrl = 'http://localhost:3000/api/players';
 
-  constructor(private http: HttpClient) {}
+  constructor(private _http: HttpClient) {}
 
   getPlayers(): Observable<Player[]> {
     return of(PLAYERS);
-    // return this.http.get<Player[]>(this.apiUrl);
+    // return this._http.get<Player[]>(this.apiUrl);
   }
 
   addPlayer(player: Player): Observable<string> {
     console.log('Añado jugadora', player);
     return of('');
-    // return this.http.post<string>(this.apiUrl, player);
+    // return this._http.post<string>(this.apiUrl, player);
   }
 
   editPlayer(player: Player): Observable<string> {
     console.log('Edito jugadora', player);
     return of('');
     // const url = `${this.apiUrl}/${player.id}`;
-    // return this.http.put<string>(url, player);
+    // return this._http.put<string>(url, player);
   }
 
   deletePlayer(player: Player): Observable<string> {
     console.log('Elimino jugadora', player);
     return of('');
     // const url = `${this.apiUrl}/${player.id}`;
-    // return this.http.delete<string>(url);
+    // return this._http.delete<string>(url);
   }
 }

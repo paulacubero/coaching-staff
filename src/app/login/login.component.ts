@@ -39,10 +39,16 @@ export class LoginComponent {
       this.authService.login(username, password).subscribe(
         (data) => {
           localStorage.setItem('token', data.token);
-          this.router.navigate(['/coaching']);
+          if (data.role === 'coach'){
+            this.router.navigate(['/coaching']);
+          }
+
+          if (data.role === 'medical'){
+            this.router.navigate(['/medical']);
+          }
         },
         (error) => {
-          alert('Login failed');
+          alert('Ha fallado el inicio de sesión');
         }
       );
     }
