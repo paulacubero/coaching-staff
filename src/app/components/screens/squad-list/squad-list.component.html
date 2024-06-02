@@ -1,4 +1,4 @@
-<div class="card pt-3 pb-3 pr-8 pl-8">
+<div *ngIf="players$ | async as players" class="card pt-3 pb-3 pr-8 pl-8">
   <p-table
     [value]="players"
     [(selection)]="selectedplayers"
@@ -76,3 +76,4 @@
     </ng-template>
   </p-table>
 </div>
+

@@ -14,6 +14,8 @@ import { ButtonModule } from 'primeng/button';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { PlayersService } from 'src/app/services/players.service';
 
 @Component({
   selector: 'app-squad-list',
@@ -30,17 +32,16 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./squad-list.component.scss'],
 })
 export class SquadListComponent implements OnInit {
-  players!: Player[];
+  players$: Observable<Player[]> = this._playersService.getPlayers();
   selectedplayers: Player[] = [];
   headers!: string[];
   squadListColumns!: Columns[];
 
-  constructor() {
+  constructor(private _playersService: PlayersService) {
     this.isRowSelectable = this.isRowSelectable.bind(this);
   }
 
   ngOnInit() {
-    this.players = PLAYERS;
     this.headers = TABLE_HEADERS_SQUAD_LIST;
     this.squadListColumns = SQUAD_LIST_COLUMNS as Columns[];
   }
