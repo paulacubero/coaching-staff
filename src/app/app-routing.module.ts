@@ -15,6 +15,7 @@ const routes: Routes = [
     component: CoachingHomeComponent,
     canActivate: [AuthGuard],
     children: [
+      { path: '', redirectTo: 'squad-list', pathMatch: 'full' },
       { path: 'squad-list', component: SquadListComponent },
       { path: 'statistics', component: StatisticsComponent },
       { path: 'new-player', component: NewPlayerComponent }
