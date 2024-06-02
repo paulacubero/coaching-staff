@@ -17,6 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "core-js/modules/es.array.index-of.js",
+              "canvg"
+            ],
             "outputPath": "dist/coaching-staff",
             "index": "src/index.html",
             "main": "src/main.ts",

@@ -8,20 +8,21 @@ import { SquadListComponent } from './components/screens/squad-list/squad-list.c
 import { CoachingHomeComponent } from './components/screens/coaching-home/coaching-home.component';
 import { StatisticsComponent } from './components/screens/statistics/statistics.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [AppComponent],
   providers: [],
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     LoginComponent,
     HeaderComponent,
     CoachingHomeComponent,
     SquadListComponent,
     StatisticsComponent,
-    HttpClientModule,
+    HttpClientModule
   ],
 })
 export class AppModule {}
