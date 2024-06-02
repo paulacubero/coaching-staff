@@ -19,8 +19,15 @@ export const TABLE_HEADERS_STATISTICS = [
   'Goles',
   'Pases',
   'Minutos jugados',
-  'Editar'
+  ''
 ];
+
+export const POSITIONS = [
+  'Portera',
+  'defensa',
+  'Centrocampista',
+  'Delantera'
+]
 
 
 export const PLAYERS: Player[] = [

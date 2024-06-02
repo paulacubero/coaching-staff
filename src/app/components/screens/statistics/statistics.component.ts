@@ -4,7 +4,8 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { DEFAULT_AVATAR, PLAYERS, TABLE_HEADERS_STATISTICS } from 'src/app/constants/constants';
 import { Player } from 'src/app/models/coaches.model';
-import { ButtonEditCoachFormComponent } from '../../shared/button-edit-coach-form/button-edit-coach-form.component';
+import { ButtonEditPlayerComponent } from '../../shared/button-edit-player/button-edit-player.component';
+import { ButtonDeletePlayerComponent } from '../../shared/button-delete-player/button-delete-player.component';
 
 @Component({
   selector: 'app-statistics',
@@ -13,7 +14,8 @@ import { ButtonEditCoachFormComponent } from '../../shared/button-edit-coach-for
     CommonModule,
     TableModule,
     ButtonModule,
-    ButtonEditCoachFormComponent
+    ButtonEditPlayerComponent,
+    ButtonDeletePlayerComponent
   ],
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.scss']

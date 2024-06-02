@@ -1,1 +1,116 @@
-<p>new-player works!</p>
+<!-- <div class="p-fluid">
+  <form [formGroup]="playerForm" (ngSubmit)="onSubmit()" class="p-fluid">
+    <div class="p-field">
+      <label for="name">Name</label>
+      <input id="name" type="text" pInputText formControlName="name" />
+    </div>
+    <div class="p-field">
+      <label for="surname">Surname</label>
+      <input id="surname" type="text" pInputText formControlName="surname" />
+    </div>
+    <div class="p-field">
+      <label for="age">Age</label>
+      <input id="age" type="number" pInputNumber formControlName="age" />
+    </div>
+    <div class="p-field">
+      <label for="height">Height</label>
+      <input id="height" type="number" pInputNumber formControlName="height" />
+    </div>
+    <div class="p-field">
+      <label for="weight">Weight</label>
+      <input id="weight" type="number" pInputNumber formControlName="weight" />
+    </div>
+    <div class="p-field">
+      <label for="position">Position</label>
+      <input id="position" type="text" pInputText formControlName="position" />
+    </div>
+    <div class="card flex justify-content-center">
+      <label for="dorsal">Dorsal</label>
+      <input
+        pInputText
+        pKeyFilter="int"
+        placeholder="Integers"
+        formControlName="dorsal"
+      />
+    </div>
+    <div class="p-field">
+      <label for="img">Image URL</label>
+      <input id="img" type="url" pInputText formControlName="img" />
+    </div>
+    <button type="submit" pButton label="Submit"></button>
+  </form>
+</div> -->
+
+<form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+  <div class="image-container">
+    <img [src]="getImage()" alt="Player Image" class="rounded-image" />
+  </div>
+  <div class="formgrid grid pt-5 pb-5 pr-8 pl-8 mr-8 ml-8">
+    <div class="field col-10 md:col-5">
+      <label for="firstname6">Nombre</label>
+      <input
+        formControlName="name"
+        id="name"
+        type="text"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field col-10 md:col-5">
+      <label for="lastname6">Apellido</label>
+      <input
+        formControlName="surname"
+        id="surname"
+        type="text"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field col-10 md:col-5">
+      <label for="age">Edad</label>
+      <input
+        formControlName="age"
+        id="age"
+        type="number"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field col-10 md:col-5">
+      <label for="height">Altura</label>
+      <input
+        formControlName="height"
+        id="height"
+        type="number"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field col-10 md:col-5">
+      <label for="age">Peso</label>
+      <input
+        formControlName="weight"
+        id="weight"
+        type="number"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+    <div class="field col-10 md:col-5">
+      <label for="state">Posición</label>
+      <select
+        formControlName="position"
+        id="Position"
+        class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary"
+        style="appearance: auto"
+      >
+        <option *ngFor="let position of positions">{{ position }}</option>
+      </select>
+    </div>
+    <div class="field col-10 md:col-10">
+      <label for="age">Imagen</label>
+      <input
+        formControlName="img"
+        id="img"
+        type="text"
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+      />
+    </div>
+</div>
+</form>
+<button type="submit" pButton label="Guardar"></button>

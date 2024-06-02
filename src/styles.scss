@@ -9,3 +9,18 @@ body {
   width: 100vw;
   margin: 0;
 }
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.rounded-image {
+  width: 200px; 
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover; 
+  border: 2px solid #007bff;
+}

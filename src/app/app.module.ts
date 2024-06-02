@@ -3,7 +3,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { LoginComponent } from './login/login.component';
-import { HeaderComponent } from './components/shared/header/header.component';
 import { SquadListComponent } from './components/screens/squad-list/squad-list.component';
 import { CoachingHomeComponent } from './components/screens/coaching-home/coaching-home.component';
 import { StatisticsComponent } from './components/screens/statistics/statistics.component';
@@ -18,7 +17,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     AppRoutingModule,
     LoginComponent,
-    HeaderComponent,
     CoachingHomeComponent,
     SquadListComponent,
     StatisticsComponent,

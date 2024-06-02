@@ -29,9 +29,12 @@
         <td>{{ player.passes }}</td>
         <td>{{ player.playedMinutes }}</td>
         <td>
-          <app-button-edit-coach-form
+          <app-button-edit-player
             [player]="player"
-          ></app-button-edit-coach-form>
+          ></app-button-edit-player>
+          <app-button-delete-player
+          [player]="player"
+        ></app-button-delete-player>
         </td>
       </tr>
     </ng-template>
