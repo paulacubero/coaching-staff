@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
-import { PLAYERS, TABLE_HEADERS_STATISTICS } from 'src/app/constants/constants';
+import { DEFAULT_AVATAR, PLAYERS, TABLE_HEADERS_STATISTICS } from 'src/app/constants/constants';
 import { Columns, Player } from 'src/app/models/coaches.model';
 
 @Component({
@@ -10,6 +11,7 @@ import { Columns, Player } from 'src/app/models/coaches.model';
   imports: [
     CommonModule,
     TableModule,
+    ButtonModule
   ],
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.scss']
@@ -23,6 +25,10 @@ export class StatisticsComponent implements OnInit {
   ngOnInit() {
     this.players = PLAYERS;
     this.headers = TABLE_HEADERS_STATISTICS;
+  }
+
+  getImage(player: Player) {
+    return player.img ? player.img : DEFAULT_AVATAR;
   }
 
 }

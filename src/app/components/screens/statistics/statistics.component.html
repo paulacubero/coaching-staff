@@ -1,5 +1,4 @@
-<p>Statistics works!</p>
-<!-- <div class="card">
+<div class="card">
   <p-table
     [value]="players"
     dataKey="id"
@@ -14,12 +13,6 @@
     </ng-template>
     <ng-template pTemplate="body" let-player>
       <tr>
-        <td>
-          <p-tableCheckbox
-            [value]="player"
-            [disabled]="isInjured(player)"
-          ></p-tableCheckbox>
-        </td>
         <td>
           <img
             [alt]="player.name"
@@ -36,12 +29,8 @@
         <td>{{ player.passes }}</td>
         <td>{{ player.playedMinutes }}</td>
         <td>
-          <p-tag
-            [value]="player.available ? 'Disponible' : 'Lesión'"
-            [severity]="player.available ? 'success' : 'danger'"
-          ></p-tag>
-        </td>
+          <p-button icon="pi pi-user-edit" styleClass="p-button-rounded p-button-info p-button-text p-button-raised"></p-button>
       </tr>
     </ng-template>
   </p-table>
-</div> -->
+</div>

@@ -15,9 +15,11 @@ export const TABLE_HEADERS_SQUAD_LIST = [
 
 export const TABLE_HEADERS_STATISTICS = [
   'Nombre',
+  'Posición',
   'Goles',
   'Pases',
-  'Minutos jugados'
+  'Minutos jugados',
+  'Editar'
 ];
 
 
