@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card pt-3 pb-3 pr-8 pl-8">
   <p-table
     [value]="players"
     dataKey="id"
@@ -29,10 +29,11 @@
         <td>{{ player.passes }}</td>
         <td>{{ player.playedMinutes }}</td>
         <td>
-          <app-button-edit-coach-form [player]="player"></app-button-edit-coach-form>
+          <app-button-edit-coach-form
+            [player]="player"
+          ></app-button-edit-coach-form>
         </td>
       </tr>
     </ng-template>
   </p-table>
 </div>
-
