@@ -1,1 +1,5 @@
-<p>medical-home works!</p>
+<div class="medical-home-wrapper">
+    <ng-container *ngFor="let player of players$ | async">
+        <app-player-card [player]="player"></app-player-card>
+    </ng-container>
+</div>
