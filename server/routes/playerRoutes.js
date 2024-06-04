@@ -61,6 +61,7 @@ router.put("/players/:id", getPlayer, async (req, res) => {
   res.player.available = req.body.available;
   res.player.dorsal = req.body.dorsal;
   res.player.img = req.body.img;
+  res.player.injuries = req.body.injuries;
 
   try {
     const updatedPlayer = await res.player.save();
