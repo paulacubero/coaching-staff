@@ -9,6 +9,7 @@ import { MedicalHomeComponent } from './components/screens/medical-home/medical-
 import { AuthMedicalGuard } from './guards/auth-medical.guard';
 import { AuthCoachGuard } from './guards/auth-coach.guard';
 import { PageNotFoundComponent } from './components/screens/page-not-found/page-not-found.component';
+import { CoachingDashboardComponent } from './components/screens/coaching-dashboard/coaching-dashboard.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,21 +18,21 @@ const routes: Routes = [
     component: CoachingHomeComponent,
     canActivate: [AuthCoachGuard],
     children: [
-      { path: '', redirectTo: 'squad-list', pathMatch: 'full' },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: CoachingDashboardComponent },
       { path: 'squad-list', component: SquadListComponent },
       { path: 'statistics', component: StatisticsComponent },
-      { path: 'new-player', component: NewPlayerComponent }
+      { path: 'new-player', component: NewPlayerComponent },
     ],
   },
   {
     path: 'medical',
     component: MedicalHomeComponent,
     canActivate: [AuthMedicalGuard],
-    children: [
-    ],
+    children: [],
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
