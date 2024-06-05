@@ -8,6 +8,7 @@ import { NewPlayerComponent } from './components/screens/new-player/new-player.c
 import { MedicalHomeComponent } from './components/screens/medical-home/medical-home.component';
 import { AuthMedicalGuard } from './guards/auth-medical.guard';
 import { AuthCoachGuard } from './guards/auth-coach.guard';
+import { PageNotFoundComponent } from './components/screens/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -20,7 +21,6 @@ const routes: Routes = [
       { path: 'squad-list', component: SquadListComponent },
       { path: 'statistics', component: StatisticsComponent },
       { path: 'new-player', component: NewPlayerComponent }
-      
     ],
   },
   {
@@ -31,6 +31,7 @@ const routes: Routes = [
     ],
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
