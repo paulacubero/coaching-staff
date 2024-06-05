@@ -7,6 +7,7 @@ import { CoachingHomeComponent } from './components/screens/coaching-home/coachi
 import { StatisticsComponent } from './components/screens/statistics/statistics.component';
 import { NewPlayerComponent } from './components/screens/new-player/new-player.component';
 import { MedicalHomeComponent } from './components/screens/medical-home/medical-home.component';
+import { CoachingDashboardComponent } from './components/screens/coaching-dashboard/coaching-dashboard.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,19 +16,18 @@ const routes: Routes = [
     component: CoachingHomeComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: '', redirectTo: 'squad-list', pathMatch: 'full' },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: CoachingDashboardComponent },
       { path: 'squad-list', component: SquadListComponent },
       { path: 'statistics', component: StatisticsComponent },
-      { path: 'new-player', component: NewPlayerComponent }
-      
+      { path: 'new-player', component: NewPlayerComponent },
     ],
   },
   {
     path: 'medical',
     component: MedicalHomeComponent,
     canActivate: [AuthGuard],
-    children: [
-    ],
+    children: [],
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];

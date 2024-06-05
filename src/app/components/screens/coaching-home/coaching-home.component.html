@@ -1,5 +1,23 @@
-<p-button label="Crear convocatoria" icon="pi pi-users" routerLink="/coaching/squad-list"></p-button>
-<p-button label="Estadísticas" icon="pi pi-chart" routerLink="/coaching/statistics"></p-button>
-<p-button label="Alta jugadora" icon="pi pi-chart" routerLink="/coaching/new-player"></p-button>
+<nav class="navbar">
+  <a routerLink="/coaching/dashboard" routerLinkActive="active">
+    <i class="pi pi-home"></i>
+  </a>
+  <div class="nav-links">
+    <a routerLink="/coaching/squad-list" routerLinkActive="active">
+      <i class="pi pi-users"></i> Crear convocatoria
+    </a>
+    <a routerLink="/coaching/statistics" routerLinkActive="active"
+      >Estadísticas</a
+    >
+    <a routerLink="/coaching/new-player" routerLinkActive="active"
+      >Alta jugadora</a
+    >
+  </div>
+  <div class="nav-actions">
+    <a class="logout">
+      <i class="pi pi-sign-out"></i>
+    </a>
+  </div>
+</nav>
 
 <router-outlet></router-outlet>
