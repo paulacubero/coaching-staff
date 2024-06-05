@@ -39,6 +39,7 @@ export class LoginComponent {
       this.authService.login(username, password).subscribe(
         (data) => {
           localStorage.setItem('token', data.token);
+          localStorage.setItem('role', data.role);
           if (data.role === 'coach'){
             this.router.navigate(['/coaching']);
           }

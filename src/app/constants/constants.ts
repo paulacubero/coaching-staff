@@ -21,6 +21,9 @@ export const TABLE_HEADERS_STATISTICS = [
   '',
 ];
 
+export const COACH_ROLE = 'coach';
+export const MEDICAL_ROLE = 'medical';
+
 export const POSITIONS = ['Portera', 'Defensa', 'Centrocampista', 'Delantera'];
 
 export const DEFAULT_AVATAR =

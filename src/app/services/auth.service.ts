@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { COACH_ROLE, MEDICAL_ROLE } from '../constants/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,15 @@ export class AuthService {
     return this._http.post<any>(`${this.apiUrl}/login`, { username, password });
   }
 
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
+  isAuthenticatedAsCoach(): boolean {
+    const token = localStorage.getItem('token');
+    const userRole = localStorage.getItem('role');
+    return !!(token && userRole === COACH_ROLE);
+  }
+
+  isAuthenticatedAsMedical(): boolean {
+    const token = localStorage.getItem('token');
+    const userRole = localStorage.getItem('role');
+    return !!(token && userRole === MEDICAL_ROLE);
   }
 }
