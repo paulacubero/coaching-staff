@@ -39,6 +39,15 @@
   border-radius: 10px;
 }
 
+.rectangle a {
+  text-decoration: none;
+  color: black;
+}
+
+.rectangle a:hover {
+  color: #28d6b9;
+}
+
 .width-img {
   width: 20rem;
 }

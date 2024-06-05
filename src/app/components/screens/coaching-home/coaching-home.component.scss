@@ -57,9 +57,19 @@
       padding: 0.5rem;
       transition: color 0.3s ease;
 
+      .tooltiptext {
+        visibility: hidden;
+        position: absolute;
+        right: 4rem;
+        margin-right: 1rem;
+      }
+
       &:hover {
         cursor: pointer;
-        color: #000;
+
+      }
+      &:hover .tooltiptext {
+        visibility: visible;
       }
     }
   }

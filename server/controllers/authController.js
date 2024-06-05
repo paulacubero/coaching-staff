@@ -16,7 +16,7 @@ exports.login = async (req, res) => {
     const token = jwt.sign({ id: user._id, role: user.role }, secret, {
       expiresIn: "1h",
     });
-    res.send({ token, role: user.role });
+    res.send({ token, role: user.role, name: user.username });
   } catch (error) {
     res.status(500).send("Error del servidor");
   }

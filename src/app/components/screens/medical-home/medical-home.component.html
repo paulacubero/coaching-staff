@@ -1,8 +1,37 @@
-<div class="medical-home-wrapper">
-  <ng-container *ngFor="let player of players$ | async">
-    <app-player-card
-      [player]="player"
-      (changeAvailability)="refreshAvailability($event)"
-    ></app-player-card>
-  </ng-container>
+<nav class="navbar">
+  <div class="nav-actions">
+    <p-avatar
+      [label]="userInitials"
+      styleClass="mr-2"
+      size="large"
+      [style]="{ 'background-color': '#2196F3', color: '#ffffff' }"
+      shape="circle"
+    ></p-avatar>
+    <a (click)="userLogOut()" class="logout">
+      <i class="pi pi-sign-out"></i>
+      <span class="tooltiptext">Log out</span>
+    </a>
+  </div>
+</nav>
+<div class="medical-search" *ngIf="players$ | async as players">
+  <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Nombre..."
+      class="p-inputtext-lg"
+      pInputText
+    />
+  </span>
+  <div class="medical-home-wrapper">
+    <ng-container
+      *ngFor="let player of players | playerNameFilter : searchTerm"
+    >
+      <app-player-card
+        [player]="player"
+        (changeAvailability)="refreshAvailability($event)"
+      ></app-player-card>
+    </ng-container>
+  </div>
 </div>

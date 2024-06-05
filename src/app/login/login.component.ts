@@ -40,6 +40,7 @@ export class LoginComponent {
         (data) => {
           localStorage.setItem('token', data.token);
           localStorage.setItem('role', data.role);
+          localStorage.setItem('name', data.name);
           if (data.role === 'coach'){
             this.router.navigate(['/coaching']);
           }
