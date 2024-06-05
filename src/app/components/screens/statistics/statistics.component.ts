@@ -39,4 +39,8 @@ export class StatisticsComponent implements OnInit {
   getImage(player: Player) {
     return player.img ? player.img : DEFAULT_AVATAR;
   }
+
+  refreshStatistics(): void {
+    this.players$ = this._playersService.getPlayers();
+  }
 }

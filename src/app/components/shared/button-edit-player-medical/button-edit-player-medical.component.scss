@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   margin: 1rem 0;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .wrapper-time-input {
@@ -16,12 +16,14 @@
   height: 10rem;
   border-radius: 50%;
   object-fit: cover;
+  margin-bottom: 3rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.form-edit-player {
+.form-edit-player-medical {
   display: flex;
   gap: 3rem;
+  margin-top: 1rem;
 }
 
 .edit-form-label {
@@ -43,4 +45,17 @@
 
 .wrapper-player-info-container span {
   font-weight: 700;
+}
+
+.wrapper-detail-injuries {
+  font-size: 0.9rem;
+  font-weight: 400;
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.weight-input {
+  width: 3rem;
+  margin: 0 0.5rem;
 }

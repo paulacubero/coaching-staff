@@ -4,60 +4,108 @@
   styleClass="p-button-rounded p-button-info p-button-text p-button-raised"
   (click)="openDialogForm()"
 ></p-button>
-<p-dialog *ngIf="player" header="Header" [(visible)]="visible" [style]="{ width: '50vw' }">
+<p-dialog
+  *ngIf="player"
+  header="Header"
+  [(visible)]="visible"
+  [style]="{ width: '35rem' }"
+>
   <ng-template pTemplate="header">
-    <span class="text-xl font-bold">Editor de estadísticas</span>
+    <span class="text-xl font-bold" style="color: #3b82f6"
+      >Editor de estadísticas</span
+    >
   </ng-template>
-  <div class="image-container">
-    <img [src]="getImage(player)" alt="Player Image" class="rounded-image">
-    <div class="player-info-container">
-        <h5>Nombre: {{player.name}}</h5>
-        <h5>Apellido: {{player.surname}}</h5>
-        <h5>Posición: {{player.position}}</h5>
+  <div class="wrapper-image-name">
+    <img
+      [src]="getImage(player)"
+      alt="Player Image"
+      class="player-rounded-image"
+    />
+    <div class="wrapper-player-info-container">
+      <h5>
+        Nombre:
+        <span>
+          {{ player.name | titlecase }}
+        </span>
+      </h5>
+      <h5>
+        Apellido:
+        <span>
+          {{ player.surname | titlecase }}
+        </span>
+      </h5>
+      <h5>
+        Posición:
+        <span>
+          {{ player.position | titlecase }}
+        </span>
+      </h5>
     </div>
-  </div>  
-  <form [formGroup]="playerStatsForm">
-    <div class="flex-auto">
-      <label class="mb-2 block font-bold" for="minmax-buttons"
-        >Minutos jugados</label
+  </div>
+  <form [formGroup]="playerStatsForm" class="form-edit-player">
+    <div class="wrapper-time-input">
+      <div class="edit-form-label">
+        <label class="block font-bold" for="minmax-buttons"
+          >Minutos jugados</label
+        >
+        <i class="pi pi-clock" style="color: #3b82f6"></i>
+      </div>
+
+      <p-knob
+        formControlName="playedMinutes"
+        [step]="1"
+        [min]="0"
+        [max]="90"
+        valueTemplate="{value}min"
+      ></p-knob>
+    </div>
+    <div>
+      <div class="edit-form-label">
+        <label class="block font-bold" for="minmax-buttons">Goles</label>
+        <i class="pi pi-globe" style="color: #3b82f6"></i>
+      </div>
+
+      <p-inputNumber
+        formControlName="goals"
+        [showButtons]="true"
+        inputId="minmax-buttons"
+        [min]="0"
       >
-      <p-knob formControlName="playedMinutes" [step]="1" [min]="0" [max]="90"></p-knob>
+      </p-inputNumber>
+      <div class="edit-form-label">
+        <label class="block font-bold" for="minmax-buttons">Assistencias</label>
+        <i class="pi pi-gift" style="color: #3b82f6"></i>
+      </div>
+      <p-inputNumber
+        formControlName="assists"
+        [showButtons]="true"
+        inputId="minmax-buttons"
+        [min]="0"
+      >
+      </p-inputNumber>
+      <div class="edit-form-label">
+        <label class="block font-bold" for="minmax-buttons">Pases</label>
+        <i class="pi pi-arrow-circle-right" style="color: #3b82f6"></i>
+      </div>
+      <p-inputNumber
+        formControlName="passes"
+        [showButtons]="true"
+        inputId="minmax-buttons"
+        [min]="0"
+      >
+      </p-inputNumber>
     </div>
-    <div class="flex-auto">
-        <label class="mb-2 block font-bold" for="minmax-buttons"
-          >Goles</label
-        >
-        <p-inputNumber
-          formControlName="goals"
-          [showButtons]="true"
-          inputId="minmax-buttons"
-          [min]="0"
-        >
-        </p-inputNumber>
-      </div>
-      <div class="flex-auto">
-        <label class="mb-2 block font-bold" for="minmax-buttons"
-          >Pases</label
-        >
-        <p-inputNumber
-          formControlName="passes"
-          [showButtons]="true"
-          inputId="minmax-buttons"
-          [min]="0"
-        >
-        </p-inputNumber>
-      </div>
   </form>
 
   <ng-template pTemplate="footer">
     <p-button
-    type="button"
-    [disabled]="playerStatsForm.invalid"
-    icon="pi pi-times"
-    (click)="closeDialogForm()"
-    label="Cancelar"
-    styleClass="p-button-text p-button-danger"
-  ></p-button>
+      type="button"
+      [disabled]="playerStatsForm.invalid"
+      icon="pi pi-times"
+      (click)="closeDialogForm()"
+      label="Cancelar"
+      styleClass="p-button-text p-button-danger"
+    ></p-button>
     <p-button
       type="submit"
       [disabled]="playerStatsForm.invalid"
