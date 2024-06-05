@@ -61,7 +61,8 @@ router.put("/players/:id", getPlayer, async (req, res) => {
   res.player.available = req.body.available;
   res.player.dorsal = req.body.dorsal;
   res.player.img = req.body.img;
-
+  res.player.injuries = req.body.injuries;
+  
   try {
     const updatedPlayer = await res.player.save();
     res.json(updatedPlayer);
@@ -74,7 +75,7 @@ router.put("/players/:id", getPlayer, async (req, res) => {
 router.delete("/players/:id", getPlayer, async (req, res) => {
   try {
     await Player.findByIdAndDelete(req.params.id); // Elimina la jugadora por su ID
-    res.json({ message: "Jugadora eliminado" });
+    res.json({ message: "Jugadora eliminada" });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

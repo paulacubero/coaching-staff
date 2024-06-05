@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -35,7 +35,9 @@ import { tap } from 'rxjs';
   providers: [MessageService],
 })
 export class ButtonEditPlayerComponent implements OnInit {
-  @Input() player?: Player;
+  @Input() player!: Player;
+  @Output() addStatisticsToPlayer: EventEmitter<any> = new EventEmitter();
+
   visible = false;
   playerStatsForm!: FormGroup;
   constructor(
@@ -47,10 +49,10 @@ export class ButtonEditPlayerComponent implements OnInit {
   ngOnInit(): void {
     if (this.player) {
       this.playerStatsForm = this._fb.group({
-        id: [this.player._id],
         playedMinutes: [0],
         goals: [0],
         passes: [0],
+        assists: [0],
       });
     }
   }
@@ -60,9 +62,19 @@ export class ButtonEditPlayerComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const player = this.playerStatsForm.value;
+    const { playedMinutes, goals, passes, assists } =
+      this.playerStatsForm.value;
+
+    const newPlayerData = {
+      ...this.player,
+      playedMinutes: this.player.playedMinutes + playedMinutes,
+      goals: this.player.goals + goals,
+      passes: this.player.passes + passes,
+      assists: this.player.assists + assists,
+    };
+
     this._playersService
-      .editPlayer(player)
+      .editPlayer(newPlayerData)
       .pipe(
         tap(() => {
           this.visible = false;
@@ -71,6 +83,9 @@ export class ButtonEditPlayerComponent implements OnInit {
             summary: 'Confirmado',
             detail: `Se han actualizado los datos de ${this.player?.name} ${this.player?.surname}`,
           });
+          setTimeout(() => {
+            this.addStatisticsToPlayer.emit();
+          }, 1000);
         })
       )
       .subscribe();

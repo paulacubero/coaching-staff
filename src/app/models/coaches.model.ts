@@ -13,6 +13,12 @@ export interface Player {
   available: boolean;
   dorsal: number;
   img: string;
+  injuries: Injuries[];
+}
+
+interface Injuries {
+  date: string | null;
+  type: string;
 }
 
 export interface Columns {

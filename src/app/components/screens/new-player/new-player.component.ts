@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -15,6 +15,8 @@ import { ToastModule } from 'primeng/toast';
 import { tap } from 'rxjs';
 import { DEFAULT_AVATAR, POSITIONS } from 'src/app/constants/constants';
 import { PlayersService } from 'src/app/services/players.service';
+import { DropdownModule } from 'primeng/dropdown';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-new-player',
@@ -27,54 +29,86 @@ import { PlayersService } from 'src/app/services/players.service';
     ButtonModule,
     ReactiveFormsModule,
     ToastModule,
+    DropdownModule,
+    RouterModule,
   ],
   templateUrl: './new-player.component.html',
   styleUrls: ['./new-player.component.scss'],
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class NewPlayerComponent implements OnInit {
+  router = inject(Router);
   positions: string[] = POSITIONS;
-  playerForm: FormGroup;
+  dorsals: number[] = [];
+  createPlayerForm: FormGroup;
 
   constructor(
     private _fb: FormBuilder,
     private _playersService: PlayersService,
     private _messageService: MessageService
   ) {
-    this.playerForm = this._fb.group({
+    this.createPlayerForm = this._fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
       age: [null, [Validators.required, Validators.min(0)]],
       height: [null, [Validators.required, Validators.min(0)]],
       weight: [null, [Validators.required, Validators.min(0)]],
       position: ['', Validators.required],
-      dorsal: [null, [Validators.required, Validators.min(0)]],
+      dorsal: [null, [Validators.required]],
       img: [''],
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._playersService
+      .getPlayers()
+      .pipe(
+        tap((players) => {
+          const currentDorsals = players.map((player) => player.dorsal);
+          const allDorsals = Array.from({ length: 30 }, (_, i) => i + 1);
+          const availableDorsals = allDorsals.filter(
+            (dorsal) => !currentDorsals.includes(dorsal)
+          );
+          this.dorsals = availableDorsals;
+        })
+      )
+      .subscribe();
+  }
 
   onSubmit() {
-    const player = this.playerForm.value;
+    const player = this.createPlayerForm.value;
+
+    const newplayer = {
+      ...player,
+      playedMinutes: 0,
+      goals: 0,
+      passes: 0,
+      assists: 0,
+      available: true,
+      injuries: [],
+    };
+
     this._playersService
-      .addPlayer(player)
+      .addPlayer(newplayer)
       .pipe(
-        tap(() =>
+        tap(() => {
           this._messageService.add({
             severity: 'success',
             summary: 'Confirmado',
             detail: `Se ha añadido nueva jugadora`,
-          })
-        )
+          });
+          setTimeout(() => {
+            this.router.navigate(['/coaching/squad-list']);
+          }, 1000);
+        })
       )
       .subscribe();
-    this.playerForm.reset();
+    this.createPlayerForm.reset();
   }
 
   getImage() {
-    return this.playerForm.value.img
-      ? this.playerForm.value.img
+    return this.createPlayerForm.value.img
+      ? this.createPlayerForm.value.img
       : DEFAULT_AVATAR;
   }
 }

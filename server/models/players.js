@@ -1,5 +1,10 @@
 const mongoose = require("mongoose");
 
+const injurySchema = new mongoose.Schema({
+  date: { type: String, required: true },
+  type:  { type: String, required: true },
+})
+
 const playerSchema = new mongoose.Schema({
   name: { type: String, required: true },
   surname: { type: String, required: true },
@@ -14,6 +19,7 @@ const playerSchema = new mongoose.Schema({
   available: { type: Boolean, required: true },
   dorsal: { type: Number, required: true },
   img: { type: String, required: true },
+  injuries: {type: [injurySchema], default: []},
 });
 
 const Player = mongoose.model("Player", playerSchema, "players");

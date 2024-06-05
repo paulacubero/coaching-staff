@@ -29,9 +29,13 @@
         <td>{{ player.passes }}</td>
         <td>{{ player.playedMinutes }}</td>
         <td>
-          <app-button-edit-player [player]="player"></app-button-edit-player>
+          <app-button-edit-player
+            [player]="player"
+            (addStatisticsToPlayer)="refreshStatistics()"
+          ></app-button-edit-player>
           <app-button-delete-player
             [player]="player"
+            (playerDeleted)="refreshStatistics()"
           ></app-button-delete-player>
         </td>
       </tr>

@@ -1,9 +1,31 @@
-<div class="card player-card">
-    <p-card>
-      <img [src]="player.img" alt="Foto de la jugadora" class="player-img">
-        <div class="player-info">
-            <h2>{{player.name}} {{player.surname}}</h2>
-            <h4>{{player.position}} {{player.dorsal}}</h4>
-        </div>
-    </p-card>
+<div class="player-card">
+  <div class="wrapper-img-dorsal">
+    <div class="wrapper-img-icon">
+      <img [src]="player.img" alt="Foto de la jugadora" class="player-img" />
+      <i
+        *ngIf="!player.available"
+        class="pi pi-ban icon-availability"
+        style="color: red"
+      ></i>
+      <i
+        *ngIf="player.available"
+        class="pi pi-check-circle icon-availability"
+        style="color: green"
+      ></i>
+    </div>
+    <span>{{ player.dorsal }}</span>
+  </div>
+  <div class="wrapper-name">
+    <h2>{{ player.name | titlecase }} {{ player.surname | titlecase }}</h2>
+  </div>
+  <div class="wrapper-position-form">
+    <app-button-edit-player-medical
+      [player]="player"
+      (addInjuryToPlayer)="changeAvailability.emit(true)"
+    ></app-button-edit-player-medical>
+    <h4>{{ player.position | titlecase }}</h4>
+    <form [formGroup]="availabilityForm">
+      <p-inputSwitch formControlName="available"></p-inputSwitch>
+    </form>
+  </div>
 </div>

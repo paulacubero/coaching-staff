@@ -7,6 +7,7 @@ export const SQUAD_LIST_COLUMNS = [
 
 export const TABLE_HEADERS_SQUAD_LIST = [
   'Nombre',
+  'Dorsal',
   'Posición',
   'Disponibilidad',
 ];
